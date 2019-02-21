@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>태그 객체 생성하기</title>
+<script>
+	function createTag(){
+		var test1 = document.getElementById("test1");
+		
+		var tag_a = document.createElement("a");
+		tag_a.href = "http://android.com";
+		tag_a.style.color = "red";
+		
+		var node_str = document.createTextNode("안드로이드");
+		tag_a.appendChild(node_str);
+		
+		var tag_img = document.createElement("img");
+		tag_img.src = "image/android.png";
+		tag_a.appendChild(tag_img);
+		
+		
+		test1.appendChild(tag_a);
+	}
+</script>
+</head>
+<body>
+	<div id="test1"></div>
+	<button onclick="createTag()">태그 객체 만들기</button>
+</body>
+</html>
