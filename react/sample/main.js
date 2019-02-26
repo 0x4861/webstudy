@@ -1,5 +1,4 @@
-// component는 트리 구조로 구성되어져 있다.
-
+/*
 class Rectangle extends React.Component{
   render() {
     var recStyle={
@@ -45,6 +44,38 @@ class ColorCard extends React.Component{
     );
   }
 };
+*/
 
-const element = <div><ColorCard color="yellow"/></div>;
+class C extends React.Component{
+  render() {
+    return (
+      <div>
+        <p>{this.props.color}</p>
+        <p>{this.props.name}</p>
+        <p>{this.props.size}</p>
+      </div>
+    );
+  }
+};
+
+class B extends React.Component{
+  render() {
+    return (
+      <C color={this.props.color} name={this.props.name} size={this.props.size}/>
+    );
+  }
+};
+
+class A extends React.Component{
+  render() {
+    return (
+      <div>
+        <!--<B color={this.props.color} name={this.props.name} size={this.props.size}/>-->
+        <B {...this.props}/>
+      </div>
+    );
+  }
+};
+
+const element = <div><A color="red" name="빨강" size="small"/></div>;
 ReactDOM.render(element, document.querySelector('#container'));
