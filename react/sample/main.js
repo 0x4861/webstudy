@@ -1,81 +1,52 @@
-/*
-class Rectangle extends React.Component{
+// component state 변화를 저장, 데이터를 활용
+// getInitialState -> component가 마운트 되기 전에 실행됨. 초기값을 정할때 사용.
+// componentWillMount -> 렌더링 되기전 실행됨.
+// componentDidMount -> 렌더링 후에 실행됨.
+// setState -> state값을 새로 셋팅할 때 사용.
+
+class AutoCounter extends React.Component {
+  constructor() {
+    super();
+    // timerCount 함수에서 this.setState 함수를 호출하기 위해서는, 초기화 과정에서 bind를 해줘야 한다.
+    this.timerCount=this.timerCount.bind(this);
+    this.state={count:10};
+  }
+
+  timerCount() {
+    this.setState({
+      count:this.state.count+10
+    });
+  }
+
+  componentDidMount(){
+    setInterval(this.timerCount, 1000);
+  }
+
   render() {
-    var recStyle={
-      height:160,
-      backgroundColor:this.props.color
-    };
-    return(
-      <div style={recStyle}></div>
+    return (
+      <h1>{this.state.count}</h1>
     );
   }
 };
 
-class ColorName extends React.Component{
+class AutoCounterDisplay extends React.Component {
   render() {
-    var nameStyle={
-      fontWeight:"bold",
-      padding:15,
-      margin:0,
-      textAlign:"center"
-    };
+    var divStyle={
+      width:300,
+      textAlign:"center",
+      padding:40,
+      backgroundColor:"gray",
+      color:"blue",
+      borderRadius:20,
+      margin:20
+    }
     return (
-      //<div style={nameStyle}>Blue</div>
-      <p style={nameStyle}>{this.props.color}</p>
-    );
-  }
-};
-
-class ColorCard extends React.Component{
-  render() {
-    var cardStyle = {
-      width:150,
-      height:200,
-      padding:0,
-      backgroundColor:"#fff",
-      WebkitFilter:"drop-shadow(0px 0px 5px #777)",
-      Filter:"drop-shadow(0px 0px 5px #777)"
-    };
-    return (
-      <div style={cardStyle}>
-        <Rectangle color={this.props.color}/>
-        <ColorName color={this.props.color}/>
-      </div>
-    );
-  }
-};
-*/
-
-class C extends React.Component{
-  render() {
-    return (
-      <div>
-        <p>{this.props.color}</p>
-        <p>{this.props.name}</p>
-        <p>{this.props.size}</p>
+      <div style={divStyle}>
+        <AutoCounter/>
       </div>
     );
   }
 };
 
-class B extends React.Component{
-  render() {
-    return (
-      <C color={this.props.color} name={this.props.name} size={this.props.size}/>
-    );
-  }
-};
-
-class A extends React.Component{
-  render() {
-    return (
-      <div>
-        <!--<B color={this.props.color} name={this.props.name} size={this.props.size}/>-->
-        <B {...this.props}/>
-      </div>
-    );
-  }
-};
-
-const element = <div><A color="red" name="빨강" size="small"/></div>;
+const element = <AutoCounterDisplay/>;
 ReactDOM.render(element, document.querySelector('#container'));
