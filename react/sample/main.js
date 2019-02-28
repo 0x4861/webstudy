@@ -16,14 +16,22 @@ class Circle extends React.Component {
   }
 };
 
-function showCircle() {
-  var colors = ["orange", "blue", "green", "cyan"];
-  var randomColor = Math.floor(Math.random()*colors.length);
+// function showCircle() {
+//   var colors = ["orange", "blue", "green", "cyan"];
+//   var randomColor = Math.floor(Math.random()*colors.length);
 
-  return <Circle bgColor={colors[randomColor]}/>
+//   return <Circle bgColor={colors[randomColor]}/>
+// }
+var colors = ["orange", "blue", "green", "black", "lightgray", "red", "yellow"];
+
+var compData = [];
+for (var i=0; i<colors.length; i++) {
+  var color = colors[i];
+  compData.push(<Circle key={i+color} bgColor={color}/>);
 }
 
-var element = <Circle bgColor="red"/>;
-var element2 = <Circle bgColor="orange"/>;
 var destination = document.querySelector('#container');
-ReactDOM.render(<div>{showCircle()}{showCircle()}{showCircle()}</div>, destination);
+ReactDOM.render(
+  <div>
+    {compData}
+  </div>, destination);
