@@ -1,22 +1,72 @@
-class TempClass extends React.Component {
+class Counter extends React.Component {
   render() {
-    var tempStyle={
-      padding:10,
-      margin:20,
-      display:"inline-block",
-      backgroundColor:this.props.bgColor,
-      width:100,
-      height:100,
-      borderRadius:"50%"
+    var counterStyle={
+      fontSize: 70,
+      color:"#555",
+      fontWeight:"bold"
     };
 
     return (
-      <div style={tempStyle}></div>
+      <div style={counterStyle}>
+        {this.props.display}
+      </div>
     );
   }
 };
 
+class CounterParent extends React.Component {
+  constructor() {
+    super();
+    this.render=this.render.bind(this);
+    this.countup=this.countup.bind(this);
+    this.countdown=this.countdown.bind(this);
+    this.state={
+      count:10
+    }
+  }
+
+  countup() {
+      this.setState({
+        count:this.state.count+1
+      });
+    };
+
+  countdown() {
+    this.setState({
+        count:this.state.count-1
+      });
+  };
+
+  render() {
+    var backgroundStyle={
+      padding:50,
+      backgroundColor : "orange",
+      width:250,
+      height:150,
+      borderRadius:10,
+      textAlign:"center"
+    };
+
+    var buttonStyle={
+      fontSize:20,
+      width:40,
+      height:30,
+      color:"#555",
+      fontWeight:"bold"
+    };
+
+    return(
+      <div style={backgroundStyle}>
+        <Counter display={this.state.count}/>
+        <button onClick={this.countdown} style={buttonStyle}>-</button>
+        <button onClick={this.countup} style={buttonStyle}>+</button>
+      </div>
+    );
+  }
+}
+
 var destination = document.querySelector('#container');
 ReactDOM.render(
   <div>
+    <CounterParent />
   </div>, destination);
