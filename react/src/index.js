@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import SearchBar from './components/search_bar'
 
 const API_KEY = 'AIzaSyBYIKt3pJV_CrBSHSxWQAPSwlaPi78srXs';
 
@@ -9,7 +10,11 @@ const API_KEY = 'AIzaSyBYIKt3pJV_CrBSHSxWQAPSwlaPi78srXs';
 // function() 를 ()=> 로 변경하여 사용할 수 있음.
 const App = () => {
     // JSX문법. (함수안에 HTML이 들어가도 문제 없는 이유)
-    return <div>Hi!</div>;
+    return (
+        <div>
+            <SearchBar/>
+        </div>
+    );
 }
 
 // Take this component is generated HTML and put it on the page (in the DOM)
