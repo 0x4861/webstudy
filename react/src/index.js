@@ -10,22 +10,25 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            videos: []
+            videos: [],
+            selectedVideo: null
         };
 
         YTSearch({key:API_KEY, term: 'surfboards'}, (videos) => {
-            this.setState({ videos }); 
-            // ES6에서 key와 value가 같을 때는 줄여서 쓸수 있다.
-            // origin : this.setState({ videos: videos}); 
-            // ES6 : this.setState({ videos }); 
+            this.setState({ 
+                videos: videos,
+                selectedVideo: videos[0]
+            });
         });
     }
     render() {
         return (
             <div>
                 <SearchBar />
-                <VideoDetail video={this.state.videos[0]}/>
-                <VideoList videos={this.state.videos}/>
+                <VideoDetail video={this.state.selectedVideo}/>
+                <VideoList 
+                    onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+                    videos={this.state.videos}/>
             </div>
         );
     }

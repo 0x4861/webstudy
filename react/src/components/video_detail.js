@@ -1,8 +1,11 @@
 import React from 'react';
 
 const VideoDetail = ({video}) => {
-    const videoId = video.id.videoId;
+    if (!video) {
+        return <div>Loading....</div>;
+    }
 
+    const videoId = video.id.videoId;
     // ES6에서 사용하는 구문으로 아래 2개는 같은 동작을 한다.
     //const url = 'https://www.youtube.com/embed' + videoId;
     const url = `https://www.youtube.com/embed/${videoId}`;
