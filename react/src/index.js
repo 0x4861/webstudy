@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import YTSearch from 'youtube-api-search'
 
@@ -6,20 +6,27 @@ import SearchBar from './components/search_bar'
 
 const API_KEY = 'AIzaSyBYIKt3pJV_CrBSHSxWQAPSwlaPi78srXs';
 
-YTSearch({key:API_KEY, term: 'surfboards'}, function(data) {
-    console.log(data);
-});
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            videos: []
+        };
 
-// Create a new component. This component should produce some HTML
-// const는 ES6에서 나오는 표현법.(선언후 변경할 수 없음)
-// function() 를 ()=> 로 변경하여 사용할 수 있음.
-const App = () => {
-    // JSX문법. (함수안에 HTML이 들어가도 문제 없는 이유)
-    return (
-        <div>
-            <SearchBar/>
-        </div>
-    );
+        YTSearch({key:API_KEY, term: 'surfboards'}, (videos) => {
+            this.setState({ videos }); 
+            // ES6에서 key와 value가 같을 때는 줄여서 쓸수 있다.
+            // origin : this.setState({ videos: videos}); 
+            // ES6 : this.setState({ videos }); 
+        });
+    }
+    render() {
+        return (
+            <div>
+                <SearchBar/>
+            </div>
+        );
+    }
 }
 
 // Take this component is generated HTML and put it on the page (in the DOM)
