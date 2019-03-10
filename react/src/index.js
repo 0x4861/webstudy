@@ -1,11 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import YTSearch from 'youtube-api-search'
+
 import SearchBar from './components/search_bar'
 
 const API_KEY = 'AIzaSyBYIKt3pJV_CrBSHSxWQAPSwlaPi78srXs';
 
-// Create a new component. This component should produce some HTML
+YTSearch({key:API_KEY, term: 'surfboards'}, function(data) {
+    console.log(data);
+});
 
+// Create a new component. This component should produce some HTML
 // const는 ES6에서 나오는 표현법.(선언후 변경할 수 없음)
 // function() 를 ()=> 로 변경하여 사용할 수 있음.
 const App = () => {
