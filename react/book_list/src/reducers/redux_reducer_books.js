@@ -5,9 +5,9 @@
 // 2. 어플리케이션에 연결 (./index.js 참고)
 export default function() {
     return [
-        { title: 'Javascript: The Good Parts' },
-        { title: 'Harry Potter' },
-        { title: 'The Dark Tower' },
-        { title: 'Ruby' },
+        { title: 'Javascript: The Good Parts', pages:101},
+        { title: 'Harry Potter', pages:201 },
+        { title: 'The Dark Tower', pages:301 },
+        { title: 'Ruby', pages:401 },
     ]
 }
