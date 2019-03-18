@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch",
+    "test.watch": "npm run test -- --watch",
     "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors"
   },
   "author": "",
@@ -21,11 +21,13 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-preset-stage-1": "^6.1.18",
     "lodash": "^3.10.1",
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-redux": "5.0.7",
+    "react-sparklines": "^1.6.0",
     "redux": "4.0.0",
     "redux-promise": "^0.6.0"
   }
