@@ -25,7 +25,8 @@ class App extends Component {
             <div>
                 <p>hello</p>
                 <h1>Title</h1>
-                <button onClick={()=>this.add()}>Add</button>
+                <button accesskey="h" onClick={()=>this.add()}>Add</button>
+                <p> counting {this.props.counter} </p>
             </div>
         )
     }

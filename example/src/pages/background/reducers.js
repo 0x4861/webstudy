@@ -7,17 +7,18 @@ const defaultState = {
 const counter = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD':
-        console.log('insid reducers..', action, 'state', state);
-            return ({
-                count: action.counter.count + 1
-            })
+        return 'ok'
+        // console.log('insid reducers..', action, 'state', state);
+        //     return ({
+        //         count: action.counter.count + 1
+        //     })
     }
     return state;
 
 }
 
 const reducers = combineReducers({
-    counter
+    //counter
 });
 
-export default reducers;
+export default counter;
