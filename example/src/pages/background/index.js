@@ -38,6 +38,7 @@ chrome.tabs.onActivated.addListener(function (tabs) {
 })
 */
 
+/*
 chrome.runtime.onConnect.addListener(function (port) {
     console.assert(port.name === "url-connection");
     port.onMessage.addListener(function (msg) {
@@ -51,3 +52,4 @@ chrome.runtime.onConnect.addListener(function (port) {
         }
     });
 });
+*/

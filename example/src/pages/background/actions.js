@@ -1,3 +1,8 @@
+export const bookmark = (link) => ({
+    type: 'ADD',
+    link: link
+})
+
 /*
 export const add = (data) => {
     console.log('inside reducers..', data);
@@ -8,6 +13,7 @@ export const add = (data) => {
 }
 */
 
+/*
 export const add = () => {
     return new Promise((resolve, reject) => {
         console.log('inside actions..')
@@ -34,3 +40,4 @@ export const add = () => {
         });
     });
 }
+*/

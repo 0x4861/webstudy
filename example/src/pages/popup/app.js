@@ -1,42 +1,59 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {add} from '../background/actions';
+import {bookmark} from '../background/actions';
 import './app.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
-
-        this.add = this.add.bind(this);
+        this.state = {
+            tabs: ['nothing']
+        }
+        //this.addBookmark = this.addBookmark.bind(this);
+        //this.createList = this.createList.bind(this);
     }
 
-    add() {
-        this.props.addNum();
+    addBookmark() {
+        console.log('this props', this.props)
+        chrome.tabs.query({active: true}, (data) => {
+            this.props.add(data[0])
+        });
     }
 
+    /*
     componentDidMount() {
         this.add();
     }
+    */
 
+    renderList() {
+        return this.props.tabs.map (link => {
+            return (
+                <h3 class='link'>{link}</h3>
+            )
+        });
+    }
+   
     render() {
+        console.log('[App render] props', this.props)
         return (
             <div>
-                <p>hello</p>
                 <h1>Title</h1>
-                <button accesskey="h" onClick={()=>this.add()}>Add</button>
-                <p> counting {this.props.counter} </p>
+                <button onClick={()=>this.addBookmark()}>Add</button>
+                <div>{this.renderList()}</div>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    counter: state.counter
+    tabs : state.tabs
 });
 
 const mapDispatchToProps = (dispatch) => ({
     //addNum: (data) => dispatch(add(data))
-    addNum: async () => dispatch(await add())
+    //addNum: async () => dispatch(await add())
+    add: (link) => dispatch(bookmark(link))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

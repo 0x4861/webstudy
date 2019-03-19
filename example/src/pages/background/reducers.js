@@ -1,25 +1,25 @@
-import { combineReducers } from 'redux';
+import {
+    combineReducers
+} from 'redux';
 
 const defaultState = {
-    link: ''
+    tabs: []
 }
 
-const counter = (state = defaultState, action) => {
+const bookmark = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD':
-        console.log('add reducers ', action);
-        return 'ok'
-        // console.log('insid reducers..', action, 'state', state);
-        //     return ({
-        //         count: action.counter.count + 1
-        //     })
+            return {
+                ...state,
+                tabs: [...state.tabs, action.link.url]
+            }
+        default:
+            return state;
     }
-    return state;
-
 }
 
 const reducers = combineReducers({
     //counter
 });
 
-export default counter;
+export default bookmark;
