@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {bookmark} from '../background/actions';
+import { addBookmark, refreshBookmark } from '../background/actions';
 import './app.css';
+import randomId from 'uuid/v4';
 
 class App extends Component {
     constructor(props) {
@@ -13,25 +14,39 @@ class App extends Component {
         //this.createList = this.createList.bind(this);
     }
 
-    addBookmark() {
-        console.log('this props', this.props)
-        chrome.tabs.query({active: true}, (data) => {
-            this.props.add(data[0])
+    saveBookmark() {
+        return new Promise ((resolved, rejected)=>{
+            chrome.tabs.query({active: true}, (data) => {
+                this.props.add(data[0]);
+                resolved(data[0])
+            })
+        }).then (link => {
+            chrome.storage.sync.set({'url': ['hello']}, function() {
+
+            })
         });
     }
-
-    /*
-    componentDidMount() {
-        this.add();
+    
+    loadBookmark() {
+        return new Promise ((resolved, rejected)=>{
+            chrome.storage.sync.get('url', data=>{
+                resolved(data)
+            })
+        }).then ((data) => {
+            this.props.refresh(data)
+        })
     }
-    */
 
-    renderList() {
-        return this.props.tabs.map (link => {
+    renderBookmark() {
+        return this.props.tabs.map (tab => {
             return (
-                <h3 class='link'>{link}</h3>
+                <h3 key={randomId()}>{tab}</h3>
             )
         });
+    }
+
+    componentDidMount() {
+        this.loadBookmark()
     }
    
     render() {
@@ -39,8 +54,8 @@ class App extends Component {
         return (
             <div>
                 <h1>Title</h1>
-                <button onClick={()=>this.addBookmark()}>Add</button>
-                <div>{this.renderList()}</div>
+                <button onClick={()=>this.saveBookmark()}>Add</button>
+                <div>{this.renderBookmark()}</div>
             </div>
         )
     }
@@ -53,7 +68,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     //addNum: (data) => dispatch(add(data))
     //addNum: async () => dispatch(await add())
-    add: (link) => dispatch(bookmark(link))
+    add: (link) => dispatch(addBookmark(link)),
+    refresh: (data) => dispatch(refreshBookmark(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
