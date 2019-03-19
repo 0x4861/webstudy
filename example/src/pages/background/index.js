@@ -39,19 +39,14 @@ chrome.tabs.onActivated.addListener(function (tabs) {
 */
 
 chrome.runtime.onConnect.addListener(function (port) {
-    console.assert(port.name == "url-connection");
+    console.assert(port.name === "url-connection");
     port.onMessage.addListener(function (msg) {
         console.log("msg : ", msg);
-        if (msg.message == "url") {
+        if (msg.message === "url") {
             chrome.tabs.getSelected(null, function (tab) {
                 port.postMessage({
                     result: tab.url.toString()
                 });
-            });
-        }
-        if (msg.message2 == "dom") {
-            port.postMessage({
-                result: "2 is ok"
             });
         }
     });

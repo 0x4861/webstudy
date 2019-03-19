@@ -27,11 +27,11 @@ document.getElementById('add').addEventListener('click', function () {
     console.log('Inside click listener, CS ...');
     port.postMessage({
         message: "url",
-        message2: "dom"
     });
     port.onMessage.addListener(function (msg) {
         if (msg.result) {
             console.log('url received in the page', msg.result);
+            port.postMessage ({message: "hello"});
         }
     });
 })
