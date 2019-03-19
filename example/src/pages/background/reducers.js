@@ -19,6 +19,11 @@ const bookmark = (state = defaultState, action) => {
                 ...state,
                 tabs: [...state.tabs, ...action.urlList.url]
             }
+        case 'DELETE-ALL':
+            return {
+                ...state,
+                tabs: []
+            }
         default:
             return state;
     }

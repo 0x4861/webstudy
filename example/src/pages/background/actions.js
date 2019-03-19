@@ -8,6 +8,9 @@ export const refreshBookmark = (data) => ({
     urlList: data
 })
 
+export const deleteAllBookmark = () => ({
+    type: 'DELETE-ALL'
+})
 /*
 export const add = (data) => {
     console.log('inside reducers..', data);
