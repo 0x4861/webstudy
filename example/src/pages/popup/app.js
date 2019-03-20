@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { addBookmark, refreshBookmark, deleteAllBookmark } from '../background/actions';
+import {Store} from 'react-chrome-redux';
+import { refreshBookmark, deleteAllBookmark } from '../background/actions';
 import './app.css';
 import randomId from 'uuid/v4';
+
+// const store = new Store({ portName: "COUNTING" });
 
 class App extends Component {
     constructor(props) {
@@ -17,44 +20,42 @@ class App extends Component {
     saveBookmark() {
         return new Promise ((resolved, rejected)=>{
             chrome.tabs.query({active: true}, (data) => {
-                this.props.add(data[0])
-                console.log('new props tabs', this.props.tabs)
                 resolved(data[0])
             })
         }).then (link => {
-            chrome.storage.sync.set({'url': this.props.tabs}, function() {
-                console.log('tabs updated', this.props.tabs)
-            })
-        });
+            // chrome.storage.sync.set({'url': this.props.tabs}, function() {
+            //     console.log('tabs updated', this.props.tabs)
+                return new Promise ((resolved, rejected) => {
+                    resolved(link)
+                }).then (link => { this.props.refresh(link) })
+        })
     }
     
     loadBookmark() {
-        return new Promise ((resolved, rejected)=>{
-            chrome.storage.sync.get('url', data=>{
-                resolved(data)
-            })
-        }).then ((data) => {
-            this.props.refresh(data)
-        })
+        // return new Promise ((resolved, rejected)=>{
+        //     chrome.storage.sync.get('url', data=>{
+        //         resolved(data)
+        //     })
+        // }).then ((data) => {
+        //     this.props.refresh(data)
+        // })
     }
 
     renderBookmark() {
-        //I remove the old div with the old list of links
-        const element = document.getElementById("container");
-        if (element) element.innterHTML = "";
-        //I render the new list of links
-        console.log('TABS', this.props.tabs)
-        return this.props.tabs.map (tab => {
+        console.log('called from rendering TABS', this.props.tabs)
+        const tabs = this.props.tabs
+        return tabs.map (tab => {
+            console.log('TAB', tab)
             return (
-                <h3 key={randomId()}>{tab}</h3>
+                <h3 key={ randomId() } className='link'>{tab}</h3>
             )
         });
     }
 
     clearAll () {
-        chrome.storage.sync.clear(function(obj){
-            console.log("local storage cleared", obj);
-        });
+        // chrome.storage.sync.clear(function(obj){
+        //     console.log("local storage cleared", obj);
+        // });
         this.props.deleteAll()
     }
 
@@ -63,7 +64,7 @@ class App extends Component {
     }
    
     render() {
-        console.log('[App render] props', this.props)
+        console.log('[App render] props', this.props.state)
         return (
             <div>
                 <h1>Title</h1>
@@ -76,15 +77,15 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    tabs : state.tabs
+    tabs : state.tabs,
 });
 
 const mapDispatchToProps = (dispatch) => ({
     //addNum: (data) => dispatch(add(data))
     //addNum: async () => dispatch(await add())
-    add: (link) => dispatch(addBookmark(link)),
+    // add: (link) => dispatch(addBookmark(link)),
     refresh: (data) => dispatch(refreshBookmark(data)),
-    deleteAll: () => dispatch(deleteAllBookmark())
+    deleteAll: () => dispatch(deleteAllBookmark()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
