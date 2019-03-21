@@ -6,8 +6,13 @@ export default class ItemView extends Component {
         console.log('props in listview', this.props)
         return (
             <div className='content-container'>
-                <img src={this.props.tab_icon}/>
-                <div>{this.props.tab_title}</div>
+                <div className='col-1'>
+                <img className='icon' src={this.props.tab_icon}/>
+                <div className='title'>{this.props.tab_title}</div>
+                </div>
+                <div className='col-2'>
+                <img className='delete-button' src='../assets/nothing.png' onClick={()=>this.props.dataCallback(this.props.tab_url)}/>
+                </div>
             </div>
         )
     }

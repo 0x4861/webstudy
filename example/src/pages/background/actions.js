@@ -11,6 +11,11 @@ export const refreshBookmark = (data) => ({
 export const deleteAllBookmark = () => ({
     type: 'DELETE-ALL'
 })
+
+export const deleteOneBookmark = (url) => ({
+    type: 'DELETE-ONE',
+    url: url
+})
 /*
 export const add = (data) => {
     console.log('inside reducers..', data);

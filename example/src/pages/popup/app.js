@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { refreshBookmark, deleteAllBookmark } from '../background/actions';
+import { refreshBookmark, deleteAllBookmark, deleteOneBookmark } from '../background/actions';
 import './app.css';
 import ListView from './ListView.js'
 import truncate from 'truncate';
@@ -40,6 +40,12 @@ class App extends Component {
         this.props.deleteAll()
     }
 
+    dataCallback = (data) => {
+        console.log('data passed from props', data)
+        this.props.deleteOne(data)
+        return data;
+    }
+
     componentDidMount() {
         //this.loadBookmark()
     }
@@ -50,8 +56,8 @@ class App extends Component {
             <div className='wrapper'>
                 <h1>Title</h1>
                 <button onClick={()=>this.saveBookmark()}>Add</button>
-                <button onClick={()=>this.clearAll()}>Clear</button>
-                <ListView tabs={this.props.tabs}></ListView>
+                <button onClick={()=>this.clearAll()}>Delete All</button>
+                <ListView tabs={this.props.tabs} dataCallback={this.dataCallback}></ListView>
             </div>
         )
     }
@@ -67,6 +73,7 @@ const mapDispatchToProps = (dispatch) => ({
     // add: (link) => dispatch(addBookmark(link)),
     refresh: (data) => dispatch(refreshBookmark(data)),
     deleteAll: () => dispatch(deleteAllBookmark()),
+    deleteOne: (url) => dispatch(deleteOneBookmark(url)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

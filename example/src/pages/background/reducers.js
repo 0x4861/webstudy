@@ -25,6 +25,11 @@ const bookmark = (state = defaultState, action) => {
                 ...state,
                 tabs: []
             }
+        case 'DELETE-ONE':
+            return {
+                ...state,
+                tabs: [...state.tabs.filter(element => element[0].url !== action.url)]
+            }
         default:
             return state;
     }
