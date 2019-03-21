@@ -1,0 +1,38 @@
+{
+    "manifest_version": 2,
+    "name": "Dorder",
+    "version": "1.0.0",
+    "description": "주문테스트 도구",
+    "commands": {
+        "toggle-feature-foo": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+1",
+                "mac": "Command+Shift+1"
+            },
+            "description": "Toggle feature foo",
+            "global": true
+        }
+    },
+    "browser_action": {
+        "default_title": "Dorder",
+        "default_popup": "pages/popup.html"
+    },
+    "author": "",
+    "background": {
+        "page": "pages/background.html"
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["pages/index.js"],
+        "run_at": "document_end"
+    }],
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "http://*/*",
+        "https://*/*",
+        "storage"
+
+    ],
+    "minimum_chrome_version": "60"
+}
