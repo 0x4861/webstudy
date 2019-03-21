@@ -1,7 +1,7 @@
-// export const addBookmark = (link) => ({
-//     type: 'ADD',
-//     link: link
-// })
+export const setGoodsUrlOrder = (url) => ({
+    type: 'SETGOODSURL',
+    url: url
+})
 
 export const refreshBookmark = (data) => ({
     type: 'REFRESH',
@@ -16,6 +16,8 @@ export const deleteOneBookmark = (url) => ({
     type: 'DELETE-ONE',
     url: url
 })
+
+
 /*
 export const add = (data) => {
     console.log('inside reducers..', data);

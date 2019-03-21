@@ -16,9 +16,10 @@ class InjectApp extends Component {
 
   render() {
       console.log('store', store)
+      
       return (
         <div>
-            <div className='add-button' onClick={()=>location.href='http://www.google.com'}></div>
+            <div className='add-button' onClick={()=>location.href=store.getState().order.goods_url}></div>
         </div>
     );
   }

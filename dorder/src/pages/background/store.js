@@ -16,7 +16,8 @@ const store = createStore (
 
 store.subscribe(throttle(()=>{
     saveState({
-        tabs: store.getState().tabs
+        bookmark: store.getState().bookmark,
+        order: store.getState().order
     })
 }), 1000)
 
