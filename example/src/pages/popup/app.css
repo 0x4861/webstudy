@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 html,
 body {
     height: 400px;
     width: 400px;
+    font-size: 15px;
 }
 
 link {
+    font-family: 'Roboto';
+    font-size: 15px;
     display: flex;
     align-items: center;
     height: 40px;

@@ -15,6 +15,7 @@ const bookmark = (state = defaultState, action) => {
         //         tabs: [...state.tabs, action.link.url]
         //     }
         case 'REFRESH':
+            console.log('REFRESH url list', action.urlList)
             return {
                 ...state,
                 tabs: [...state.tabs, action.urlList.url]

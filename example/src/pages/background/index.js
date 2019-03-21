@@ -1,6 +1,8 @@
 import axios from 'axios';
 import store from './store';
 
+console.log("inside background...")
+
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     //code in here will run every time a user goes onto a new tab, so you can insert your scripts into every new tab
 

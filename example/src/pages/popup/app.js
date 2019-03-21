@@ -1,33 +1,34 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Store} from 'react-chrome-redux';
 import { refreshBookmark, deleteAllBookmark } from '../background/actions';
 import './app.css';
-import randomId from 'uuid/v4';
-
-// const store = new Store({ portName: "COUNTING" });
+import ListView from './ListView.js'
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            tabs: ['nothing']
-        }
+        // 강흥보
+        // this.state = {
+        //     tabs: ['nothing']
+        // }
         //this.addBookmark = this.addBookmark.bind(this);
         //this.createList = this.createList.bind(this);
     }
 
     saveBookmark() {
         return new Promise ((resolved, rejected)=>{
-            chrome.tabs.query({active: true}, (data) => {
-                resolved(data[0])
+            chrome.tabs.query({active: true, 'lastFocusedWindow':true }, (data) => {
+                console.log('tabs info', data)
+                resolved(data[0]);
             })
         }).then (link => {
             // chrome.storage.sync.set({'url': this.props.tabs}, function() {
             //     console.log('tabs updated', this.props.tabs)
-                return new Promise ((resolved, rejected) => {
-                    resolved(link)
-                }).then (link => { this.props.refresh(link) })
+                // console.log('tabs info : link : ', link)
+                // return new Promise ((resolved, rejected) => {
+                //     resolved(link)
+                // }).then (link => { this.props.refresh(link) })
+            this.props.refresh(link);
         })
     }
     
@@ -41,16 +42,16 @@ class App extends Component {
         // })
     }
 
-    renderBookmark() {
-        console.log('called from rendering TABS', this.props.tabs)
-        const tabs = this.props.tabs
-        return tabs.map (tab => {
-            console.log('TAB', tab)
-            return (
-                <h3 key={ randomId() } className='link'>{tab}</h3>
-            )
-        });
-    }
+    // renderBookmark() {
+    //     console.log('called from rendering TABS', this.props.tabs)
+    //     const tabs = this.props.tabs
+    //     return tabs.map (tab => {
+    //         console.log('TAB', tab)
+    //         return (
+    //             <a href={tab} target='_blank' key={randomId()} className='link'>{tab}</a>
+    //         )
+    //     });
+    // }
 
     clearAll () {
         // chrome.storage.sync.clear(function(obj){
@@ -70,7 +71,7 @@ class App extends Component {
                 <h1>Title</h1>
                 <button onClick={()=>this.saveBookmark()}>Add</button>
                 <button onClick={()=>this.clearAll()}>Clear</button>
-                <div id='container'>{this.renderBookmark()}</div>
+                <ListView tabs={this.props.tabs}></ListView>
             </div>
         )
     }
