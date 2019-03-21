@@ -5,9 +5,12 @@ body {
     height: 400px;
     width: 400px;
     font-size: 15px;
+    margin: 0px;
+    padding: 0px;
 }
 
-link {
+/*
+.link {
     font-family: 'Roboto';
     font-size: 15px;
     display: flex;
@@ -15,6 +18,11 @@ link {
     height: 40px;
     padding-left: 7px;
     border-radius: 7px;
+}
+*/
+
+.wrapper {
+    margin: 10px;
 }
 
 .link:hover {
