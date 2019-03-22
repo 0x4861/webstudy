@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import InputGoodsUrl from './InputGoodsUrl';
+import InputGoodsOrder from './InputGoodsOrder';
+import InputAlarm from './InputAlarm';
 import '../styles/app.css';
 
-class OrderForm extends Component {
+export default class OrderForm extends Component {
     constructor(props) {
         super(props)
     }
@@ -11,17 +11,9 @@ class OrderForm extends Component {
     render() {
         return (
             <div>
-                <h1>Title</h1>
-                <InputGoodsUrl/>
+                <InputGoodsOrder/>
+                <InputAlarm />
             </div>
         );
     }
 }
-
-const mapStateToProps = (state) => ({
-});
-
-const mapDispatchToProps = (dispatch) => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(OrderForm);

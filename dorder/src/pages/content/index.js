@@ -19,7 +19,7 @@ class InjectApp extends Component {
       
       return (
         <div>
-            <div className='add-button' onClick={()=>location.href=store.getState().order.goods_url}></div>
+            <div className='add-button' onClick={()=>this.ftemp()}></div>
         </div>
     );
   }
@@ -31,6 +31,12 @@ window.addEventListener('load', () => {
   injectDOM.style.textAlign = 'center';
   document.body.appendChild(injectDOM);
   render(<InjectApp />, injectDOM);
+
+  let info = store.getState().order
+    console.log("info, ", info);
+    console.log("count m ", info.goods_count_min)
+    console.log("count m ", info.goods_count_max)
+    console.log("count a ", info.goods_count_all)
 });
 
 //document.body.innerHTML += "<img id='add' src='http://www.downloadclipart.net/medium/18122-blue-pin-clip-art.png'style='width: 50px; position:fixed; top:5px; left:5px; z-index:999999'/>";

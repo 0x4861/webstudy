@@ -3,6 +3,26 @@ export const setGoodsUrlOrder = (url) => ({
     url: url
 })
 
+export const setGoodsCountMin = (data) => ({
+    type: 'SETGOODSCOUNTMIN',
+    min: data
+})
+
+export const setGoodsCountMax = (data) => ({
+    type: 'SETGOODSCOUNTMAX',
+    max: data
+})
+
+export const setGoodsCountAll = (data) => ({
+    type: 'SETGOODSCOUNTALL',
+    all: data
+})
+
+export const setOrderDelay = (data) => ({
+    type: 'SETORDERDELAY',
+    delay: data
+})
+
 export const refreshBookmark = (data) => ({
     type: 'REFRESH',
     urlList: data
