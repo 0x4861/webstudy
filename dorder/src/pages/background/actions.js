@@ -23,6 +23,30 @@ export const setOrderDelay = (data) => ({
     delay: data
 })
 
+export const setAlarmDate = (data) => ({
+    type: 'SETALARMDATE',
+    date: data
+})
+
+export const setAlarmTime = (data) => ({
+    type: 'SETALARMTIME',
+    time: data
+})
+
+export const setFileData = (data) => ({
+    type: 'SETFILEDATA',
+    file_data: data
+})
+
+export const setFileName = (data) => ({
+    type: 'SETFILENAME',
+    file_name: data
+})
+
+
+
+
+
 export const refreshBookmark = (data) => ({
     type: 'REFRESH',
     urlList: data

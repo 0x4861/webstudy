@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setOrderDelay } from '../../background/actions';
+import { setOrderDelay, setAlarmDate, setAlarmTime } from '../../background/actions';
 import { FormGroup, FormControl, Col } from 'react-bootstrap';
 import '../styles/input-time.css';
 
@@ -17,7 +17,7 @@ class InputAlarm extends Component {
                             type="number"
                             placeholder="주문과 주문 사이의 시간을 입력하세요."
                             value={this.props.time.delay}
-                            onChange={(e)=>this.props.delay(e.target.value)}/>
+                            onChange={(e)=>this.props.setDelay(e.target.value)}/>
                     </Col>
                 </FormGroup>
                 <FormGroup className='form-time-alarm'>
@@ -28,14 +28,16 @@ class InputAlarm extends Component {
                             <input type="date" 
                                 name="alarm-date" 
                                 class="datepicker"
-                                onChange={(e)=>this.props.delay(e.target.value)}
+                                value={this.props.time.date}
+                                onChange={(e)=>this.props.setDate(e.target.value)}
                                 required />
                         </div>
                         <div class="input-field time">
                             <input type="time" 
                                 name="alarm-time" 
                                 class="timepicker"
-                                onChange={(e)=>this.props.delay(e.target.value)}
+                                value={this.props.time.time}
+                                onChange={(e)=>this.props.setTime(e.target.value)}
                                 required />
                         </div>
                     </Col>
@@ -51,7 +53,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    delay: data => dispatch(setOrderDelay(data)),
+    setDelay: data => dispatch(setOrderDelay(data)),
+    setDate: data => dispatch(setAlarmDate(data)),
+    setTime: data => dispatch(setAlarmTime(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputAlarm);

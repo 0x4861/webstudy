@@ -10,7 +10,7 @@ import '../styles/input-goods.css';
 class InputGoodsOrder extends Component {
 
     render () {
-        console.log('goods order', this.props)
+        console.log('order goods', this.props)
         return (
             <div className='form-order'>
                 <FormGroup className='form-goods-url'>

@@ -19,6 +19,7 @@ store.subscribe(throttle(()=>{
         bookmark: store.getState().bookmark,
         order: store.getState().order,
         time: store.getState().time,
+        file: store.getState().file,
     })
 }), 1000)
 

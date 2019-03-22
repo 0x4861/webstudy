@@ -1,0 +1,13 @@
+.form-file {
+    width : 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+ 
+.form-file-input {
+    padding: 10px;
+    display: block;
+    margin: 15px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputGoodsOrder from './InputGoodsOrder';
 import InputAlarm from './InputAlarm';
+import InputFile from './InputFile';
 import '../styles/app.css';
 
 export default class OrderForm extends Component {
@@ -13,6 +14,7 @@ export default class OrderForm extends Component {
             <div>
                 <InputGoodsOrder/>
                 <InputAlarm />
+                <InputFile />
             </div>
         );
     }

@@ -1,14 +1,26 @@
 const defaultState = {
-    delay: ''
+    delay: '',
+    date: "",
+    time: "",
 };
 
 const time = (state = defaultState, action) => {
+    console.log('action', action)
     switch (action.type) {
         case 'SETORDERDELAY':
-            console.log('action', action)
             return {
                 ...state,
                 delay: action.delay
+            }
+        case 'SETALARMDATE':
+            return {
+                ...state,
+                date: action.date
+            }
+        case 'SETALARMTIME':
+            return {
+                ...state,
+                time: action.time
             }
         default:
             {
