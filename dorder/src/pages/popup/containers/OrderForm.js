@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import InputGoodsOrder from './InputGoodsOrder';
 import InputAlarm from './InputAlarm';
 import InputFile from './InputFile';
+import ButtonGroup from './ButtonGroup';
 import '../styles/app.css';
 
 export default class OrderForm extends Component {
@@ -12,9 +13,10 @@ export default class OrderForm extends Component {
     render() {
         return (
             <div>
-                <InputGoodsOrder/>
+                <InputGoodsOrder />
                 <InputAlarm />
                 <InputFile />
+                <ButtonGroup />
             </div>
         );
     }

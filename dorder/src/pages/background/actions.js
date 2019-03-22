@@ -43,7 +43,17 @@ export const setFileName = (data) => ({
     file_name: data
 })
 
+export const clearOrderProps = () => ({
+    type: 'CLEARORDERPROPS'
+})
 
+export const clearTimeProps = () => ({
+    type: 'CLEARTIMEPROPS'
+})
+
+export const clearFileProps = () => ({
+    type: 'CLEARFILEPROPS'
+})
 
 
 

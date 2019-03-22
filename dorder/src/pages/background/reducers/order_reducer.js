@@ -31,6 +31,15 @@ const order = (state = defaultState, action) => {
                 ...state,
                 goods_count_all: action.all
             }
+        case 'CLEARORDERPROPS':
+            console.log('action', action)
+            return {
+                ...state,
+                goods_url: "",
+                goods_count_min: '',
+                goods_count_max: '',
+                goods_count_all: '',
+            }
         default:
             {
                 return state;

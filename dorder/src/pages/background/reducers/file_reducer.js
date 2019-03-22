@@ -17,6 +17,13 @@ const file = (state = defaultState, action) => {
                 ...state,
                 name: action.file_name
             }
+        case 'CLEARFILEPROPS':
+            console.log('action', action)
+            return {
+                ...state,
+                data: [],
+                name: ''
+            }
         default:
             {
                 return state;

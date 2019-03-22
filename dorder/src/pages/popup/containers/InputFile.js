@@ -27,7 +27,7 @@ class InputFile extends Component {
                 <CSVReader
                     cssClass="form-file-input"
                     onFileLoaded={(d,n)=>{this.handleLoadedResult(d,n)}}
-                    onError={this.handleError}
+                    onError={()=>{this.handleError()}}
                     inputId="csv-reader"
                 />
             </div>
