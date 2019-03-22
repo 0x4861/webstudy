@@ -20,7 +20,8 @@ class InputGoodsOrder extends Component {
                             type="text"
                             placeholder="주문상품 URL을 입력하세요."
                             value={this.props.order.goods_url}
-                            onChange={(e)=>this.props.add(e.target.value)}/>
+                            onChange={(e)=>this.props.add(e.target.value)}
+                            required/>
                     </Col>
                 </FormGroup>
                 <FormGroup className='form-goods-count'>
@@ -30,7 +31,8 @@ class InputGoodsOrder extends Component {
                             type="number"
                             placeholder="주문 최소 수량을 입력하세요."
                             value={this.props.order.goods_count_min}
-                            onChange={(e)=>this.props.min(e.target.value)}/>
+                            onChange={(e)=>this.props.min(e.target.value)}
+                            required/>
                     </Col>
                     <Col md={ 2 }>최대주문량</Col>
                     <Col md={ 10 }>
@@ -38,7 +40,8 @@ class InputGoodsOrder extends Component {
                             type="number"
                             placeholder="주문 최대 수량을 입력하세요."
                             value={this.props.order.goods_count_max}
-                            onChange={(e)=>this.props.max(e.target.value)}/>
+                            onChange={(e)=>this.props.max(e.target.value)}
+                            required/>
                     </Col>
                     <Col md={ 2 }>전체주문량</Col>
                     <Col md={ 10 }>
@@ -46,7 +49,8 @@ class InputGoodsOrder extends Component {
                             type="number"
                             placeholder="전체 주문 수량을 입력하세요."
                             value={this.props.order.goods_count_all}
-                            onChange={(e)=>this.props.all(e.target.value)}/>
+                            onChange={(e)=>this.props.all(e.target.value)}
+                            required/>
                     </Col>
                 </FormGroup>
             </div>

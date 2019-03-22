@@ -1,0 +1,17 @@
+.form-time-alarm {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.time-alarm-group {
+    display: flex;
+    margin: 0px;
+    align-items: center;
+}
+
+.input-field {
+    padding-left:2px;
+    padding-right:2px;
+}

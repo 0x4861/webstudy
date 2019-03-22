@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setOrderDelay } from '../../background/actions';
 import { FormGroup, FormControl, Col } from 'react-bootstrap';
-import '../styles/input-goods.css';
+import '../styles/input-time.css';
 
 class InputAlarm extends Component {
 
@@ -22,12 +22,22 @@ class InputAlarm extends Component {
                 </FormGroup>
                 <FormGroup className='form-time-alarm'>
                     <Col md={ 2 }>알람 주문</Col>
-                    <Col md={ 10 }>
-                        <FormControl 
-                            type="text"
-                            placeholder="알람시간을 설정하세요."
-                            value={this.props.time.order_delay}
-                            onChange={(e)=>this.props.delay(e.target.value)}/>
+                    <Col md={ 10 } className='time-alarm-group'>
+                        <div class="input-field date">
+                            <label for="alarm-date"></label>
+                            <input type="date" 
+                                name="alarm-date" 
+                                class="datepicker"
+                                onChange={(e)=>this.props.delay(e.target.value)}
+                                required />
+                        </div>
+                        <div class="input-field time">
+                            <input type="time" 
+                                name="alarm-time" 
+                                class="timepicker"
+                                onChange={(e)=>this.props.delay(e.target.value)}
+                                required />
+                        </div>
                     </Col>
                 </FormGroup>
             </div>
