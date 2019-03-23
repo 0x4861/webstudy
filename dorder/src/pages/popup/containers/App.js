@@ -15,7 +15,6 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        //this.loadBookmark()
     }
    
     render() {

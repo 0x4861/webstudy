@@ -55,33 +55,6 @@ export const clearFileProps = () => ({
     type: 'CLEARFILEPROPS'
 })
 
-
-
-export const refreshBookmark = (data) => ({
-    type: 'REFRESH',
-    urlList: data
-})
-
-export const deleteAllBookmark = () => ({
-    type: 'DELETE-ALL'
-})
-
-export const deleteOneBookmark = (url) => ({
-    type: 'DELETE-ONE',
-    url: url
-})
-
-
-/*
-export const add = (data) => {
-    console.log('inside reducers..', data);
-    return ({
-        type: 'ADD',
-        counter: data
-    })
-}
-*/
-
 /*
 export const add = () => {
     return new Promise((resolve, reject) => {
