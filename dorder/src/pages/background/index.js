@@ -18,6 +18,32 @@ chrome.commands.onCommand.addListener(function (command) {
     alert('hello')
 });
 
+chrome.alarms.onAlarm.addListener(function(alarm) {
+
+    window.alarm = alarm;
+  
+    var w = 640;
+    var h = 390;
+    var left = (screen.width/2)-(w/2);
+    var top = (screen.height/2)-(h/2); 
+  
+    // 알람 제어 
+    chrome.windows.create({
+      'url': '/pages/popup.html',
+      'type': 'popup',
+      'width': w,
+      'height': h,
+      'left': left,
+      'top': top
+    });
+
+    // 등록된 알람 클리어
+    chrome.alarms.clearAll(function() {
+        alert("clear ok");
+    })
+  
+  });
+
 /*
 // 탭이 활성화 되었을때 url을 로그로 찍는다.
 chrome.tabs.onActivated.addListener(function (tabs) {

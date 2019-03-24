@@ -1,25 +1,25 @@
-import { SETORDERDELAY, CLEARORDERDELAY } from '../actions'
+import { SETGOODSCOUNTMAX, CLEARGOODSCOUNTMAX } from '../actions'
 
 const defaultState = {
-    delay: 0,
+    data: 0,
 };
 
-const time = (state = defaultState, action) => {
+const max = (state = defaultState, action) => {
     switch (action.type) {
-        case SETORDERDELAY:
+        case SETGOODSCOUNTMAX:
             console.log('action', action)
             return {
                 ...state,
-                delay: action.delay
+                data: action.max
             }
-        case CLEARORDERDELAY:
+        case CLEARGOODSCOUNTMAX:
             console.log('action', action)
             return {
                 ...state,
-                delay: 0
+                data: 0
             }
     }
     return state;
 };
 
-export default time;
+export default max;

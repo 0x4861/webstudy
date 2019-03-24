@@ -1,25 +1,25 @@
-import { SETORDERDELAY, CLEARORDERDELAY } from '../actions'
+import { SETGOODSURL, CLEARGOODSURL } from '../actions'
 
 const defaultState = {
-    delay: 0,
+    data: "",
 };
 
-const time = (state = defaultState, action) => {
+const url = (state = defaultState, action) => {
     switch (action.type) {
-        case SETORDERDELAY:
+        case SETGOODSURL:
             console.log('action', action)
             return {
                 ...state,
-                delay: action.delay
+                data: action.url
             }
-        case CLEARORDERDELAY:
+        case CLEARGOODSURL:
             console.log('action', action)
             return {
                 ...state,
-                delay: 0
+                data: ""
             }
     }
     return state;
 };
 
-export default time;
+export default url;

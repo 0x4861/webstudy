@@ -3,15 +3,28 @@
     display: inline-flex;
     align-items: center;
     margin-top: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.time-alarm-label {
+    width: 25%;
 }
 
 .time-alarm-group {
+    width: 75%;
     display: flex;
     margin: 0px;
     align-items: center;
 }
 
 .input-field {
-    padding-left:2px;
-    padding-right:2px;
+    padding-left: 20px;
+    display: flex;
+    float: left;
+}
+
+.text-center {
+    text-align: center!important;
+    margin: auto;
 }

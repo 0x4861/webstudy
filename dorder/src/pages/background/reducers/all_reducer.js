@@ -1,25 +1,25 @@
-import { SETORDERDELAY, CLEARORDERDELAY } from '../actions'
+import { SETGOODSCOUNTALL, CLEARGOODSCOUNTALL } from '../actions'
 
 const defaultState = {
-    delay: 0,
+    data: 0,
 };
 
-const time = (state = defaultState, action) => {
+const all = (state = defaultState, action) => {
     switch (action.type) {
-        case SETORDERDELAY:
+        case SETGOODSCOUNTALL:
             console.log('action', action)
             return {
                 ...state,
-                delay: action.delay
+                data: action.all
             }
-        case CLEARORDERDELAY:
+        case CLEARGOODSCOUNTALL:
             console.log('action', action)
             return {
                 ...state,
-                delay: 0
+                data: 0
             }
     }
     return state;
 };
 
-export default time;
+export default all;

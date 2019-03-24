@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import OrderForm from './OrderForm';
 import CouponForm from './CouponForm';
 import { BrowserRouter as Router,
@@ -9,21 +9,26 @@ import { BrowserRouter as Router,
 import { Button } from 'react-bootstrap';
 import '../styles/app.css';
 
-export default class App extends Component {
+import Perf from 'react-addons-perf';
+window.Perf = Perf;
+
+export default class App extends PureComponent {
     constructor(props) {
         super(props);
+        this.onRestart = this.onRestart.bind(this);
     }
 
-    componentDidMount() {
+    onRestart() {
+        chrome.runtime.reload();
     }
    
     render() {
-        console.log('[App render] props', this.props.state)
+        console.log("App render!!!")
         return (
             <Router>
                 <div className='wrapper'>
                     <div className='header'>
-                        <Button className="restart" type="submit" bsStyle="danger" onClick={() => chrome.runtime.reload()}>
+                        <Button className="restart" type="submit" bsStyle="danger" onClick={this.onRestart}>
                             앱재시작
                         </Button>
                         <header>설 정</header>

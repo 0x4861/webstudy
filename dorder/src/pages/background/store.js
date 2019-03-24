@@ -11,13 +11,18 @@ console.log('inside the store');
 //const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const store = createStore (
     reducer,
-    loadState()
+    loadState(),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 store.subscribe(throttle(()=>{
     saveState({
-        order: store.getState().order,
+        url: store.getState().url,
+        min: store.getState().min,
+        max: store.getState().max,
+        all: store.getState().all,
         time: store.getState().time,
+        alarm: store.getState().alarm,
         file: store.getState().file,
     })
 }), 1000)
