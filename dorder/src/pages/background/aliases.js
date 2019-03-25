@@ -2,7 +2,9 @@
 // TODO
 // 1. 액션 추가 임폴트
 // 2. 
+import _ from 'lodash';
 import store from './store';
+import { createAlarm, getAlarm, deleteAlarm } from './alarm';
 
 import { 
     clearGoodsUrl,
@@ -29,14 +31,32 @@ const resetAllData = () => dispatch => {
 };
 
 const registerOrderData = () => dispatch => {
-    console.log('ready to order');
-    let state = store.getState();
+    var state = store.getState();
     console.log('state ', state);
     // TODO
     // 1. 주문 데이터 생성
     // 2. 알람설정
+
+    // clear Alarm
+    // deleteAlarm().then(result=>{console.log(result)});
+    // get Alarm
+    // getAlarm().then(result => {console.log("Alarm : ", result);});
+
+    createAlarm(state).then(result => {
+        console.log(result)
+        if (result) {
+            alert("알람이 설정 되었습니다.")
+        } else {
+            alert("알람이 시간을 다시 확인해주세요.")
+        }
+    });
     // Alarm 시간이 되면, Background에서 listen함
     // this.createAlarm();
+
+    // random
+    // _.random(5, 15) * 1000;
+    // delay
+    // _.delay(() => { /* do somethin */ }, timeout);
 }
 
 export default {

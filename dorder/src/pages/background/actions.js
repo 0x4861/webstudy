@@ -106,7 +106,6 @@ export const clearAllData = () => ({
     type: CLEARALLDATA,
 })
 
-
 export const clearOrderProps = () => ({
     type: 'CLEARORDERPROPS'
 })

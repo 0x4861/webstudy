@@ -1,5 +1,6 @@
 import axios from 'axios';
 import store from './store';
+import { deleteAlarm } from './alarm';
 
 console.log("inside background...")
 
@@ -38,10 +39,8 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
     });
 
     // 등록된 알람 클리어
-    chrome.alarms.clearAll(function() {
-        alert("clear ok");
-    })
-  
+    deleteAlarm().then(result=>{console.log(result)});
+
   });
 
 /*
