@@ -15,8 +15,7 @@ export const CLEARGOODSCOUNTALL = 'CLEARGOODSCOUNTALL';
 export const CLEARORDERDELAY = 'CLEARORDERDELAY';
 export const CLEARALARMDATE = 'CLEARALARMDATE';
 export const CLEARALARMTIME = 'CLEARALARMTIME';
-export const CLEARFILEDATA = 'CLEARFILEDATA';
-export const CLEARFILENAME = 'CLEARFILENAME';
+export const CLEARFILEPROPS = 'CLEARFILEPROPS';
 
 export const setGoodsUrl = (url) => ({
     type: SETGOODSURL,
@@ -93,13 +92,10 @@ export const clearAlarmTime = () => ({
     type: CLEARALARMTIME,
 })
 
-export const clearFileData = () => ({
-    type: CLEARFILEDATA,
+export const clearFileProps = () => ({
+    type: CLEARFILEPROPS,
 })
 
-export const clearFileName = () => ({
-    type: CLEARFILENAME,
-})
 
 
 export const clearOrderProps = () => ({
@@ -108,10 +104,6 @@ export const clearOrderProps = () => ({
 
 export const clearTimeProps = () => ({
     type: 'CLEARTIMEPROPS'
-})
-
-export const clearFileProps = () => ({
-    type: 'CLEARFILEPROPS'
 })
 
 /*

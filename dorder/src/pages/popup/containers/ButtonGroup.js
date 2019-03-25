@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FormGroup, Button, Col } from "react-bootstrap";
-import { clearOrderProps, clearTimeProps, clearFileProps } from '../../background/actions';
+import { clearOrderProps,
+    clearTimeProps,
+    clearGoodsUrl,
+    clearGoodsCountMin,
+    clearGoodsCountMax,
+    clearGoodsCountAll,
+    clearOrderDelay,
+    clearAlarmDate,
+    clearAlarmTime,
+    clearFileProps } from '../../background/actions';
 import '../styles/button-group.css';
 
 import $ from 'jquery';
@@ -15,6 +24,20 @@ class ButtonGroup extends Component {
         super(props);
 
         this.createAlarm = this.createAlarm.bind(this);
+        this.onClearAll = this.onClearAll.bind(this);
+    }
+
+    onClearAll(event) {
+        event.preventDefault();
+        console.log('onClearAll');
+        this.props.clearUrl();
+        this.props.clearMin();
+        this.props.clearMax();
+        this.props.clearAll();
+        this.props.clearDelay();
+        this.props.clearDate();
+        this.props.clearTime();
+        this.props.clearFileProps();
     }
 
     onSubmit(event) {
@@ -33,15 +56,6 @@ class ButtonGroup extends Component {
         // 3. 알람설정
         // Alarm 시간이 되면, Background에서 listen함
         // this.createAlarm();
-    }
-
-    onInputClear(event) {
-        event.preventDefault();
-        //this.props.clearOrder();
-        //this.props.clearTime();
-        //this.props.clearFile();
-        // TODO
-        // 전체 데이터 삭제 action 추가
     }
 
     createAlarm() {
@@ -196,7 +210,7 @@ class ButtonGroup extends Component {
                         type="button"
                         bsStyle="info"
                         size="sm"
-                        onClick={(e)=>{this.onInputClear(e)}}>
+                        onClick={this.onClearAll}>
                         설정초기화
                     </Button>
                 </Col>
@@ -212,21 +226,14 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     clearOrder: () => dispatch(clearOrderProps()),
     clearTime: () => dispatch(clearTimeProps()),
+    clearUrl: () => dispatch(clearGoodsUrl()),
+    clearMin: () => dispatch(clearGoodsCountMin()),
+    clearMax: () => dispatch(clearGoodsCountMax()),
+    clearAll: () => dispatch(clearGoodsCountAll()),
+    clearDelay: () => dispatch(clearOrderDelay()),
+    clearDate: () => dispatch(clearAlarmDate()),
+    clearTime: () => dispatch(clearAlarmTime()),
     clearFile: () => dispatch(clearFileProps()),
 });
 
 export default connect(null, mapDispatchToProps)(ButtonGroup);
-
-/* 
-// TODO:
-clearGoodsUrl()
-clearGoodsCountMin()
-clearGoodsCountMax()
-clearGoodsCountAll()
-clearOrderDelay()
-clearAlarmDate()
-clearAlarmTime()
-clearFileData()
-clearFileName()
-clearFileProps()
-*/
