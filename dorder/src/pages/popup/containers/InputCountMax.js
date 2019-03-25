@@ -26,6 +26,7 @@ class InputCountMax extends PureComponent {
                 <Col md={ 10 }>
                     <FormControl 
                         type="number"
+                        className="count-max"
                         placeholder="주문 최대 수량을 입력하세요."
                         value={this.props.max.data}
                         onChange={this.onChanageMax}

@@ -25,6 +25,7 @@ class InputUrl extends PureComponent {
                 <Col md={ 10 }>
                     <FormControl 
                         type="text"
+                        className="input-url"
                         placeholder="주문상품 URL을 입력하세요."
                         value={this.props.url.data}
                         onChange={this.onChangeUrl}

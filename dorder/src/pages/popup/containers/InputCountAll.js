@@ -26,6 +26,7 @@ class InputCountAll extends PureComponent {
                 <Col md={ 10 }>
                     <FormControl 
                         type="number"
+                        className="count-all"
                         placeholder="전체 주문 수량을 입력하세요."
                         value={this.props.all.data}
                         onChange={this.onChangeAll}

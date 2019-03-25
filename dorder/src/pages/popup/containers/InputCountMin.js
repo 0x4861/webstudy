@@ -25,6 +25,7 @@ class InputCountMin extends PureComponent {
                 <Col md={ 10 }>
                     <FormControl 
                         type="number"
+                        className="count-min"
                         placeholder="주문 최소 수량을 입력하세요."
                         value={this.props.min.data}
                         onChange={this.onChanageMin}

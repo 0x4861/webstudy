@@ -15,11 +15,6 @@ window.Perf = Perf;
 export default class App extends PureComponent {
     constructor(props) {
         super(props);
-        this.onRestart = this.onRestart.bind(this);
-    }
-
-    onRestart() {
-        chrome.runtime.reload();
     }
    
     render() {
@@ -28,9 +23,6 @@ export default class App extends PureComponent {
             <Router>
                 <div className='wrapper'>
                     <div className='header'>
-                        <Button className="restart" type="submit" bsStyle="danger" onClick={this.onRestart}>
-                            앱재시작
-                        </Button>
                         <header>설 정</header>
                         <ul className="nav_ul" role="tablist">
                             <li><NavLink exact to="/pages/popup.html" className="nav_link">주문설정</NavLink></li>

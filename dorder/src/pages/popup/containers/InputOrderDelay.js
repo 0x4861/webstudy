@@ -25,7 +25,7 @@ class InputOrderDelay extends PureComponent {
                 <Col md={ 10 }>
                     <FormControl 
                         type="number"
-                        placeholder="주문과 주문 사이의 시간을 입력하세요."
+                        placeholder="주문과 주문 사이의 시간을 입력하세요. 비어두시면 기본값으로 처리됩니다."
                         value={this.props.time.delay}
                         onChange={this.onChanageDelay}/>
                 </Col>

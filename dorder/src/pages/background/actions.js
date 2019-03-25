@@ -17,6 +17,9 @@ export const CLEARALARMDATE = 'CLEARALARMDATE';
 export const CLEARALARMTIME = 'CLEARALARMTIME';
 export const CLEARFILEPROPS = 'CLEARFILEPROPS';
 
+export const CLEARALLDATA = 'CLEARALLDATA';
+export const REGISTERORDER = 'REGISTERORDER';
+
 export const setGoodsUrl = (url) => ({
     type: SETGOODSURL,
     url: url
@@ -62,6 +65,9 @@ export const setFileName = (data) => ({
     file_name: data
 })
 
+export const registerOrder = () => ({
+    type: REGISTERORDER,
+})
 
 // CLEAR
 export const clearGoodsUrl = () => ({
@@ -96,6 +102,9 @@ export const clearFileProps = () => ({
     type: CLEARFILEPROPS,
 })
 
+export const clearAllData = () => ({
+    type: CLEARALLDATA,
+})
 
 
 export const clearOrderProps = () => ({
