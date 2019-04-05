@@ -1,3 +1,4 @@
+console.log('inside the store');
 import { applyMiddleware, createStore } from 'redux';
 import { wrapStore, alias } from "react-chrome-redux";
 import { createLogger } from 'redux-logger';
@@ -6,8 +7,6 @@ import reducer from './reducers'
 import throttle from 'lodash/throttle';
 import { saveState, loadState } from './localStorage';
 import aliasSource from './aliases.js';
-
-console.log('inside the store');
 
 const logger = createLogger();
 

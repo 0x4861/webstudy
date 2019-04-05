@@ -4,12 +4,12 @@
     "version": "1.0.0",
     "description": "주문테스트 도구",
     "commands": {
-        "toggle-feature-foo": {
+        "toggle-key-command": {
             "suggested_key": {
                 "default": "Ctrl+Shift+1",
                 "mac": "Command+Shift+1"
             },
-            "description": "Toggle feature foo",
+            "description": "key command",
             "global": true
         }
     },
@@ -21,14 +21,18 @@
     "background": {
         "page": "pages/background.html"
     },
-    "content_scripts": [{
+    "content_scripts": [
+    {
         "matches": ["<all_urls>"],
         "js": ["pages/index.js"],
         "run_at": "document_end"
-    }],
+    }
+    ],
+    "web_accessible_resources": ["pages/pagescript.js"],
     "permissions": [
         "tabs",
         "activeTab",
+        "<all_urls>",
         "http://*/*",
         "https://*/*",
         "storage",

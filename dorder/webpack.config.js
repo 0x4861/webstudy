@@ -28,6 +28,10 @@ module.exports = {
         index: [
             'babel-polyfill',
             `${PAGES_PATH}/content`
+        ],
+        script: [
+            'babel-polyfill',
+            `${PAGES_PATH}/script`
         ]
     },
     output: {
